@@ -16,8 +16,7 @@ resource "aws_instance" "k8s" {
     ami           = data.aws_ami.debian.id
     instance_type = var.tipo_recurso
     key_name      = "chave_aws"
-    for_each    = toset ( var.nome_no )
     tags          = {  
-      Name        = each.key
+      Name        = var.nome_no[count.index]
     }
 }
