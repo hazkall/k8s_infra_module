@@ -17,6 +17,7 @@ resource "aws_instance" "k8s" {
     instance_type = var.tipo_recurso
     key_name      = "chave_aws"
     tags          = {
-      Name        = var.nome_no[each.key]
+      for_each    = toset ( var.nome_no )
+      Name        = each.key
     }
 }
