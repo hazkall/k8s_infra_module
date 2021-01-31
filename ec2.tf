@@ -18,6 +18,6 @@ resource "aws_instance" "k8s" {
     instance_type = each.key
     key_name      = "chave_aws"
     tags          = {  
-      Name        = var.nome_no[count.index]
+      Name        = var.nome_no[var.contador]
     }
 }
