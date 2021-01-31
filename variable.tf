@@ -11,7 +11,7 @@ variable "nome_no" {
 }
 
 variable "tipo_recurso" {
-    type        = string
-    default     = "t2.micro"
-    description = "Tipo de recurso do EC2"
+    type        = list(string)
+    default     = ["t2.micro","t2.medium"]
+    description = "List of instance type"
 }

@@ -14,7 +14,8 @@ data "aws_ami" "debian" {
 resource "aws_instance" "k8s" {
     count         = var.contador
     ami           = data.aws_ami.debian.id
-    instance_type = var.tipo_recurso
+    for_each = toset(var.ipo_recurso)
+    instance_type = each.key
     key_name      = "chave_aws"
     tags          = {  
       Name        = var.nome_no[count.index]
